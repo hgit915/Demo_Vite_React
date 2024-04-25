@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import bannerImg from "assets/png/banner.png";
 
 export const HeaderWrapper = styled.div`
-  color: white;
+  color: ${(props) => props.theme.textColor.black80};
+  font-weight: bold;
   font-size: 14px;
 
-  .banner {
+  .appHeader {
     display: flex;
-    height: 40px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 2px solid ${(props) => props.theme.textColor.black40};
   }
 
   .left {
@@ -77,11 +79,5 @@ export const HeaderWrapper = styled.div`
     .bottom {
       border-top: 1px solid #ddd;
     }
-  }
-
-  .carousel {
-    height: 400px;
-    background-image: url(${bannerImg});
-    background-size: cover;
   }
 `;
