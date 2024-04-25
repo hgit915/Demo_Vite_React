@@ -18,6 +18,7 @@ export default defineConfig({
       "@": resolve("src"),
       "~": resolve(""),
       components: resolve("src/components"),
+      assets: resolve("src/assets/image"),
     },
   },
 });
