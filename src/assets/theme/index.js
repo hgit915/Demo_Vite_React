@@ -1,4 +1,6 @@
-const theme = {
+import { createTheme } from "@mui/system";
+
+const theme = createTheme({
   // TODO: 切換主題
   color: {
     primaryDark: "#7B6651",
@@ -16,7 +18,7 @@ const theme = {
     black60: "#909090",
     black40: "#ECECEC",
     black10: "#F9F9F9",
-    black0: "#FFFFFF",
+    white: "#FFFFFF",
     // success
     Success120: "#299f65",
     SuccessBase: "#52DD7E",
@@ -40,6 +42,6 @@ const theme = {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     }`,
   },
-};
+});
 
 export default theme;

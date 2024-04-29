@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import { styled } from "@mui/system";
 
-export const HeaderWrapper = styled.div`
-  color: ${(props) => props.theme.textColor.black80};
+export const HeaderWrapper = styled("div")(
+  ({ theme }) => `
+  color: ${theme.textColor.black80};
   font-weight: bold;
   font-size: 14px;
 
@@ -9,7 +10,7 @@ export const HeaderWrapper = styled.div`
     display: flex;
     height: 50px;
     line-height: 50px;
-    border-bottom: 2px solid ${(props) => props.theme.textColor.black40};
+    border-bottom: 2px solid ${theme.textColor.black40};
   }
 
   .left {
@@ -25,7 +26,7 @@ export const HeaderWrapper = styled.div`
   .center {
     display: flex;
     align-items: center;
-    color: ${(props) => props.theme.color.primaryTint};
+    color: ${theme.color.primaryTint};
   }
 
   .right {
@@ -47,13 +48,13 @@ export const HeaderWrapper = styled.div`
     border: 1px solid gray;
     border-radius: 18px;
     cursor: pointer;
-    ${(props) => props.theme.mixins.boxShadow}
+    ${theme.mixins.boxShadow}
     position: relative
   }
 
   .panel {
     position: absolute;
-    color: ${(props) => props.theme.textColor.black80};
+    color: ${theme.textColor.black80};
     font-weight: bold;
     width: 100px;
     background-color: white;
@@ -67,7 +68,7 @@ export const HeaderWrapper = styled.div`
       line-height: 30px;
       cursor: pointer;
       &:hover {
-        color: ${(props) => props.theme.color.primaryBase};
+        color: ${theme.color.primaryBase};
       }
     }
 
@@ -80,4 +81,5 @@ export const HeaderWrapper = styled.div`
       border-top: 1px solid #ddd;
     }
   }
-`;
+`
+);

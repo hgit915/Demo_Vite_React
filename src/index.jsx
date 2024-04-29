@@ -1,7 +1,8 @@
 import React, { Suspense } from "react"; // 引入 React.StrictMode 需要
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "@mui/system";
+
 import { Provider } from "react-redux";
 import store from "@/store/index.jsx";
 

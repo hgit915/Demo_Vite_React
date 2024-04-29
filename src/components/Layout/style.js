@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import { styled } from "@mui/system";
 
-export const LayoutWrapper = styled.div`
+export const LayoutWrapper = styled("div")(
+  ({ theme }) => `
   #root {
     max-width: 1280px;
     min-width: 700px;
@@ -15,4 +16,5 @@ export const LayoutWrapper = styled.div`
       animation: logo-spin infinite 20s linear;
     }
   }
-`;
+`
+);
