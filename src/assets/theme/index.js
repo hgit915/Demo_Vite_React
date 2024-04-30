@@ -1,6 +1,19 @@
-import { createTheme } from "@mui/system";
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#BF9D7D", // 主色
+      dark: "#7B6651", // hover
+      contrastText: "#FFFFFF", // 字體
+    },
+    secondary: {
+      light: "#ff7961",
+      main: "#de66fb", // 主色
+      dark: "#F7F2EE",
+      contrastText: "red",
+    },
+  },
   // TODO: 切換主題
   color: {
     primaryDark: "#7B6651",

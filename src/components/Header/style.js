@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 export const HeaderWrapper = styled("div")(
   ({ theme }) => `
@@ -61,6 +61,7 @@ export const HeaderWrapper = styled("div")(
     border-radius: 10px;
     top: 40px;
     right: 0;
+    z-index:999;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 
     .item {
