@@ -19,6 +19,8 @@ export default defineConfig({
       "~": resolve(""),
       components: resolve("src/components"),
       assets: resolve("src/assets/image"),
+      apis: resolve("src/services/apis"),
+      "@mui/styled-engine": "@mui/styled-engine-sc",
     },
   },
 });
