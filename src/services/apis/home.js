@@ -6,4 +6,4 @@ import axios from "../request";
  */
 export const getTracks = () => axios.get("/home/highscore");
 
-export const getGoodPrice = () => axios.get("/home/goodprice");
+export const getRooms = () => axios.get("/rooms");

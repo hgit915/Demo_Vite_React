@@ -1,24 +1,37 @@
-import React, { memo, useEffect, useState } from "react";
-import { getTracks } from "@/apis/home";
+import React, { memo, useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
+import { fetchHomeDataAction } from "@/store/modules/home";
+import { HomeWrapper } from "./style";
+import { Container } from "@mui/material";
+import RoomItems from "@/components/RoomItems";
+
 const Home = memo(() => {
-  const [highScore, setHighScore] = useState({});
+  const dispatch = useDispatch();
+  const { rooms } = useSelector(
+    (state) => ({
+      rooms: state.home.rooms,
+    }),
+    shallowEqual
+  );
 
   useEffect(() => {
-    getTracks().then((res) => {
-      setHighScore(res);
-    });
-  }, []);
+    dispatch(fetchHomeDataAction());
+  }, [dispatch]);
 
   return (
-    <div>
-      <h2>{highScore.title}</h2>
-      <h4>{highScore.subtitle}</h4>
-      <ul>
-        {highScore?.list?.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
-        })}
-      </ul>
-    </div>
+    <HomeWrapper>
+      <div className="carousel"></div>
+      <Container maxWidth="md">
+        <div className="title">房型選擇</div>
+        <div className="desc">各種房型，任您挑選</div>
+        <ul>
+          {rooms?.map((item) => {
+            return <RoomItems key={item["_id"]} itemData={item} />;
+          })}
+        </ul>
+      </Container>
+    </HomeWrapper>
   );
 });
 
