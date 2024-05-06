@@ -8,10 +8,9 @@ const theme = createTheme({
       contrastText: "#FFFFFF", // 字體
     },
     secondary: {
-      light: "#ff7961",
-      main: "#de66fb", // 主色
-      dark: "#F7F2EE",
-      contrastText: "red",
+      main: "#FFFFFF", // 主色
+      dark: "#7B6651",
+      contrastText: "#BF9D7D",
     },
   },
   // TODO: 切換主題

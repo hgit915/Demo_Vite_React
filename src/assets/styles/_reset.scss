@@ -1,14 +1,25 @@
 @import "_variables.scss";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Noto Serif TC";
+  // , Helvetica, Arial, sans-serif;
 }
 
 body {
   margin: 0 auto;
   min-height: 100vh;
-  min-width: 600px;
+  min-width: 960px;
   max-width: 1180px;
   color: #222222;
   line-height: 1.5;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
 }
