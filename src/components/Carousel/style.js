@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 
-export const TestWrapper = styled("div")(
+export const CarouselWrapper = styled("div")(
   ({ theme }) => `
   
   .header {

@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { TestWrapper } from "./style";
+import { CarouselWrapper } from "./style";
 
 const Carousel = memo((props) => {
   const { imgList } = props;
@@ -22,17 +22,17 @@ const Carousel = memo((props) => {
   };
 
   return (
-    <TestWrapper>
+    <CarouselWrapper>
       <Slider {...settings}>
         {imgList.map((item, idx) => (
           <img
             key={idx}
-            src={`/src/assets/image/jpg/${item}`}
+            src={item}
             className="img"
           />
         ))}
       </Slider>
-    </TestWrapper>
+    </CarouselWrapper>
   );
 });
 
