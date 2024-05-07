@@ -9,6 +9,7 @@ export const LoginWrapper = styled("div")(
   
   .subTitle{
     margin-bottom:20px;
+    text-align:center;
     > span {
       font-size: 38px;
       font-weight: bold;
@@ -24,9 +25,8 @@ export const LoginWrapper = styled("div")(
   }
   .loginInfo{
     flex: 1;
-    text-align:center;
     background-color: ${theme.color.primaryTint};
-    padding: 80px 30px;
+    padding: 60px 30px;
   }
 
   .hint{
@@ -38,7 +38,6 @@ export const LoginWrapper = styled("div")(
 
   .regLink {
    margin-top:30px;
-   text-align:left;
   }
 `
 );

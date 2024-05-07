@@ -10,6 +10,9 @@ const instance = axios.create({
 // request 攔截器：新增共用參數
 instance.interceptors.request.use(
   (config) => {
+    // const token = store.getState().session.token;
+    // config.headers.Authorization =
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjMwYWMwMWQ0YWFkMzRjYmMzN2FhMzkiLCJpYXQiOjE3MTQ0NjU3OTQsImV4cCI6MTcxNTA3MDU5NH0.xYHDWQ-MTp_jtySep5nG9-RctlEJN2SlMdq3x55P3aQ";
     return config;
   },
   (error) => Promise.reject(error)
@@ -22,27 +25,7 @@ instance.interceptors.response.use(
     return res.data;
   },
   (error) => {
-    let message;
-    let status = error.response.status;
-
-    switch (status) {
-      case "401":
-        message = "token 過期";
-        break;
-      case "403":
-        message = "無權限";
-        break;
-      case "404":
-        message = "請求失敗";
-        break;
-      case "500":
-        message = "伺服器失敗";
-        break;
-      default:
-        message = "網路網路出現問題";
-        bareak;
-    }
-    return Promise.reject(error);
+    return Promise.reject(error.response.data.message);
   }
 );
 
