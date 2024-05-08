@@ -26,14 +26,10 @@ const Login = memo(() => {
   const [password, setPassWord] = React.useState('')
   const [emptyErr, setEmptyErr] = React.useState({ email: false, password: false })
   const { errMsg, isLogin } = useSelector(
-    state => ({ isLogin: state.user.isLogin, errMsg: state.user.errMsg }),
+    (state) => ({ isLogin: state.user.isLogin, errMsg: state.user.errMsg }),
     shallowEqual
   )
   const [errAllMsg, setAllMsg] = React.useState(errMsg)
-
-  useEffect(() => {
-    setAllMsg(errMsg)
-  }, [errMsg])
 
   useEffect(() => {
     if (isLogin) {
@@ -41,11 +37,15 @@ const Login = memo(() => {
     }
   }, [isLogin])
 
-  const handleSubmit = e => {
+  useEffect(() => {
+    setAllMsg(errMsg)
+  }, [errMsg])
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     // 清空狀態
     dispatch(setErrMsg(''))
-    setEmptyErr(prev => ({
+    setEmptyErr((prev) => ({
       ...prev,
       email: false,
       password: false,
@@ -53,7 +53,7 @@ const Login = memo(() => {
 
     // 驗證是否為空
     if (!email || !password) {
-      setEmptyErr(prev => ({
+      setEmptyErr((prev) => ({
         ...prev,
         email: !email,
         password: !password,
@@ -63,78 +63,80 @@ const Login = memo(() => {
     dispatch(loginAction({ email, password }))
   }
   return (
-    <LoginWrapper>
-      <div className="loginImg" />
-      <div className="loginInfo">
-        <p className="subTitle">
-          享樂酒店，誠摯歡迎 <br />
-          <span>立即開始旅程</span>
-        </p>
-        <Box
-          component="form"
-          noValidate
-          autoComplete="off"
-          display="flex"
-          flexDirection="column"
-          gap={2}
-          sx={{ m: 'auto', width: '80%' }}
-          justifyContent="center"
-          onSubmit={handleSubmit}
-        >
-          <TextField
-            id="outlined-basic"
-            label="帳號"
-            variant="outlined"
-            placeholder="abc@example.com"
-            value={email}
-            onChange={e => setEmail(e.target.value.trim())}
-            error={emptyErr.email || Boolean(errAllMsg)}
-          />
-          {emptyErr.email && <FormHelperText error>帳號不得為空</FormHelperText>}
-
-          <FormControl variant="outlined" error={emptyErr.password || Boolean(errAllMsg)}>
-            <InputLabel htmlFor="outlined-adornment-password">密碼</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => setShowPassword(prevShowPassword => !prevShowPassword)}
-                    onMouseDown={e => e.preventDefault()}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-              value={password}
-              onChange={e => {
-                setPassWord(e.target.value.trim())
-              }}
+    !isLogin && (
+      <LoginWrapper>
+        <div className="loginImg" />
+        <div className="loginInfo">
+          <p className="subTitle">
+            享樂酒店，誠摯歡迎 <br />
+            <span>立即開始旅程</span>
+          </p>
+          <Box
+            component="form"
+            noValidate
+            autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            gap={2}
+            sx={{ m: 'auto', width: '80%' }}
+            justifyContent="center"
+            onSubmit={handleSubmit}
+          >
+            <TextField
+              id="outlined-basic"
+              label="帳號"
+              variant="outlined"
+              placeholder="abc@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value.trim())}
+              error={emptyErr.email || Boolean(errAllMsg)}
             />
-          </FormControl>
-          {emptyErr.password && <FormHelperText error>密碼不得為空</FormHelperText>}
-          <div className="hint">
-            <FormControlLabel sx={{ width: '120px' }} control={<Checkbox defaultChecked={true} />} label="記住帳號" />
-            <Link href="/forgot">忘記密碼？</Link>
-          </div>
+            {emptyErr.email && <FormHelperText error>帳號不得為空</FormHelperText>}
 
-          {errAllMsg && <FormHelperText error>{errAllMsg}</FormHelperText>}
+            <FormControl variant="outlined" error={emptyErr.password || Boolean(errAllMsg)}>
+              <InputLabel htmlFor="outlined-adornment-password">密碼</InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? 'text' : 'password'}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword((prevShowPassword) => !prevShowPassword)}
+                      onMouseDown={(e) => e.preventDefault()}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+                value={password}
+                onChange={(e) => {
+                  setPassWord(e.target.value.trim())
+                }}
+              />
+            </FormControl>
+            {emptyErr.password && <FormHelperText error>密碼不得為空</FormHelperText>}
+            <div className="hint">
+              <FormControlLabel sx={{ width: '120px' }} control={<Checkbox defaultChecked={true} />} label="記住帳號" />
+              <Link href="/forgot">忘記密碼？</Link>
+            </div>
 
-          <Button variant="contained" size="large" type="submit" button="primary">
-            會員登入
-          </Button>
+            {errAllMsg && <FormHelperText error>{errAllMsg}</FormHelperText>}
 
-          <span className="regLink">
-            沒有會員嗎?
-            <Link href="#/sign">前往註冊</Link>
-          </span>
-        </Box>
-      </div>
-    </LoginWrapper>
+            <Button variant="contained" size="large" type="submit" button="primary">
+              會員登入
+            </Button>
+
+            <span className="regLink">
+              沒有會員嗎?
+              <Link href="#/sign">前往註冊</Link>
+            </span>
+          </Box>
+        </div>
+      </LoginWrapper>
+    )
   )
 })
 

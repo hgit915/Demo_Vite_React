@@ -1,6 +1,6 @@
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles'
 
-export const HeaderWrapper = styled("div")(
+export const HeaderWrapper = styled('div')(
   ({ theme }) => `
   color: ${theme.textColor.black80};
   font-weight: bold;
@@ -83,4 +83,4 @@ export const HeaderWrapper = styled("div")(
     }
   }
 `
-);
+)
