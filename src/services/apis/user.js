@@ -14,6 +14,12 @@ export const login = (payload) => axios.post('/user/login', payload)
 export const checkLogin = () => axios.get('/user/check')
 
 /**
+ * [登入] - 取得使用者資料
+ * @returns {promise}
+ */
+export const getUserInfo = () => axios.get('/user')
+
+/**
  * [註冊] - 註冊
  * @returns {promise}
  */

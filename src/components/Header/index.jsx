@@ -6,14 +6,14 @@ import { HeaderWrapper } from './style'
 import logoImg from 'assets/svg/logoDark.svg'
 import menu from 'assets/svg/ic_menu.svg'
 import profile from 'assets/svg/ic_Profile.svg'
-import { checkLoginAction, setLogout } from '@/store/modules/user'
+import { getUserInfoAction, setLogout } from '@/store/modules/user'
 
 const Header = memo(() => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { isLogin, userName } = useSelector((state) => ({
     isLogin: state.user.isLogin,
-    userName: state.user.profile?.result?.name,
+    userName: state.user.profile?.name,
   }))
   const [showPanel, setShowPanel] = useState(false)
 
@@ -22,7 +22,7 @@ const Header = memo(() => {
   // 在 useEffect 中添加條件來檢查當前路由是否為 /login
   useEffect(() => {
     if (location.pathname.toLowerCase() !== '/login' && location.pathname.toLowerCase() !== '/sign') {
-      dispatch(checkLoginAction())
+      dispatch(getUserInfoAction())
     }
   }, [dispatch, location.pathname])
 
