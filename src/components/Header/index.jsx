@@ -21,7 +21,7 @@ const Header = memo(() => {
 
   // 在 useEffect 中添加條件來檢查當前路由是否為 /login
   useEffect(() => {
-    if (location.pathname.toLowerCase() !== '/login') {
+    if (location.pathname.toLowerCase() !== '/login' && location.pathname.toLowerCase() !== '/sign') {
       dispatch(checkLoginAction())
     }
   }, [dispatch, location.pathname])
