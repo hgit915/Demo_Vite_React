@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { SignWrapper } from './style'
+import { AccountPageWrapper } from '@/components/AccountPage/style'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import { Button } from '@mui/material'
@@ -166,7 +166,7 @@ const Sign = memo(() => {
   }
 
   return (
-    <SignWrapper>
+    <AccountPageWrapper>
       <div className="sideImg" />
       <div className="formContent">
         <p className="subTitle">
@@ -383,7 +383,7 @@ const Sign = memo(() => {
               helperText={errors.addressErr ? '地址不得為空' : ''}
             />
             {allErrMsg && (
-              <FormHelperText className="largeBoldText" error>
+              <FormHelperText className="allErrMsg" error>
                 請重新確認：{allErrMsg}
               </FormHelperText>
             )}
@@ -432,7 +432,7 @@ const Sign = memo(() => {
           </Button>
         )}
       </div>
-    </SignWrapper>
+    </AccountPageWrapper>
   )
 })
 

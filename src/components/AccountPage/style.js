@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles'
 import loginBG from 'assets/png/login_bg.png'
 
-export const LoginWrapper = styled('div')(
+export const AccountPageWrapper = styled('div')(
   ({ theme }) => `
   
   display: flex;
@@ -36,6 +36,11 @@ export const LoginWrapper = styled('div')(
   .regLink {
     margin-top: 30px;
     margin-left: 53px;
+  }
+  
+  .allErrMsg{
+    font-size: 14px;
+    font-weight: bold;
   }
 `
 )

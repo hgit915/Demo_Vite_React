@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { LoginWrapper } from './style'
+import { AccountPageWrapper } from '@/components/AccountPage/style'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -64,7 +64,7 @@ const Login = memo(() => {
   }
   return (
     !isLogin && (
-      <LoginWrapper>
+      <AccountPageWrapper>
         <div className="sideImg" />
         <div className="formContent">
           <p className="subTitle">
@@ -123,7 +123,11 @@ const Login = memo(() => {
               <Link href="/forgot">忘記密碼？</Link>
             </div>
 
-            {errAllMsg && <FormHelperText error>{errAllMsg}</FormHelperText>}
+            {errAllMsg && (
+              <FormHelperText className="allErrMsg" error>
+                {errAllMsg}
+              </FormHelperText>
+            )}
 
             <Button variant="contained" size="large" type="submit" button="primary">
               會員登入
@@ -134,7 +138,7 @@ const Login = memo(() => {
             <Link href="#/sign">前往註冊</Link>
           </p>
         </div>
-      </LoginWrapper>
+      </AccountPageWrapper>
     )
   )
 })
