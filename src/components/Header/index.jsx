@@ -19,12 +19,12 @@ const Header = memo(() => {
 
   const location = useLocation()
 
-  // 在 useEffect 中添加條件來檢查當前路由是否為 /login
+  // 確認登入狀態並取得 userName
   useEffect(() => {
     if (location.pathname.toLowerCase() !== '/login' && location.pathname.toLowerCase() !== '/sign') {
       dispatch(getUserInfoAction())
     }
-  }, [dispatch, location.pathname])
+  }, [dispatch])
 
   useEffect(() => {
     const windowHandleClick = () => {

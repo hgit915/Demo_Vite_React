@@ -74,13 +74,17 @@ const userSlice = createSlice({
       state.profile = payload.result
       state.isLogin = true
     })
-    builder.addMatcher(
-      (action) => action.type.endsWith('/rejected'),
-      (state, action) => {
-        state.errMsg = action.payload || '登入失敗，請稍後再試'
-        removeCookie()
-      }
-    )
+    builder.addCase(loginAction.rejected, (state, action) => {
+      // 因登入失敗會有錯誤訊息，需顯示 API ERROR
+      state.errMsg = action.payload || '登入失敗，請稍後再試'
+      removeCookie()
+    })
+    builder.addCase(checkLoginAction.rejected, (state, { payload }) => {
+      setLogout()
+    })
+    builder.addCase(getUserInfoAction.rejected, (state, { payload }) => {
+      setLogout()
+    })
   },
 })
 
