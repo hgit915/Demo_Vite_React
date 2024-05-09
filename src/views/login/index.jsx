@@ -65,8 +65,8 @@ const Login = memo(() => {
   return (
     !isLogin && (
       <LoginWrapper>
-        <div className="loginImg" />
-        <div className="loginInfo">
+        <div className="sideImg" />
+        <div className="formContent">
           <p className="subTitle">
             享樂酒店，誠摯歡迎 <br />
             <span>立即開始旅程</span>
@@ -128,12 +128,11 @@ const Login = memo(() => {
             <Button variant="contained" size="large" type="submit" button="primary">
               會員登入
             </Button>
-
-            <span className="regLink">
-              沒有會員嗎?
-              <Link href="#/sign">前往註冊</Link>
-            </span>
           </Box>
+          <p className="regLink">
+            沒有會員嗎?
+            <Link href="#/sign">前往註冊</Link>
+          </p>
         </div>
       </LoginWrapper>
     )
