@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
-import React, { memo } from "react";
-import Slider from "react-slick";
+import PropTypes from 'prop-types'
+import React, { memo } from 'react'
+import Slider from 'react-slick'
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { CarouselWrapper } from "./style";
+import { IMG_URL } from '@/services/request/config'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { CarouselWrapper } from './style'
 
 const Carousel = memo((props) => {
-  const { imgList } = props;
+  const { imgList } = props
 
   let settings = {
     lazyLoad: true,
@@ -19,24 +20,20 @@ const Carousel = memo((props) => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 4000,
-  };
+  }
 
   return (
     <CarouselWrapper>
       <Slider {...settings}>
         {imgList.map((item, idx) => (
-          <img
-            key={idx}
-            src={item}
-            className="img"
-          />
+          <img key={idx} src={`${IMG_URL}/jpg/${item}`} className="img" />
         ))}
       </Slider>
     </CarouselWrapper>
-  );
-});
+  )
+})
 
 Carousel.propTypes = {
   imgList: PropTypes.array,
-};
-export default Carousel;
+}
+export default Carousel

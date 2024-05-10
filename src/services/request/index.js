@@ -1,5 +1,5 @@
 import axios from 'axios'
-import BASE_URL from './config.js'
+import { BASE_URL } from './config.js'
 import { getCookie } from '@/utils/cookies.js'
 
 // 設定 config
