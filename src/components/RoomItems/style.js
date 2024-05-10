@@ -1,11 +1,12 @@
-import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 
 export const RoomItemsWrapper = styled(Box)(
   ({ theme }) => `
 
   display: flex;
-  height: 350px;
+  max-height: 350px;
+  box-sizing: border-box;
   background-color: ${theme.textColor.white};
   border-radius: 17px;
   padding: 20px 25px;
@@ -48,4 +49,4 @@ export const RoomItemsWrapper = styled(Box)(
     margin-right: 30px;
   }
 `
-);
+)

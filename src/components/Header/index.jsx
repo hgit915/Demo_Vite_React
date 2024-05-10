@@ -1,7 +1,8 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
+import { Button } from '@mui/material'
 import { HeaderWrapper } from './style'
 import logoImg from 'assets/svg/logoDark.svg'
 import menu from 'assets/svg/ic_menu.svg'
@@ -45,42 +46,56 @@ const Header = memo(() => {
     navigate('/')
   }
 
-  const InfoList = () =>
+  const HeaderList = () =>
     isLogin ? (
       <>
         <div>Hi {userName} 歡迎回來!</div>
-        <Link onClick={logout}>登出</Link>
+        <NavLink className="list" onClick={logout}>
+          登出
+        </NavLink>
       </>
     ) : (
       <>
         <div>訂個好房!</div>
-        <Link to="/sign">註冊</Link>
-        <Link to="/login">登入</Link>
+        <NavLink className="list" to="/sign">
+          註冊
+        </NavLink>
+        <NavLink className="list" to="/login">
+          登入
+        </NavLink>
       </>
     )
 
-  const Menu = () =>
+  const MenuList = () =>
     isLogin ? (
       <>
         <div className="panel">
           <div className="top">
-            <div className="item">會員服務</div>
-            <div className="item">訂單查詢</div>
+            <NavLink className="item" to="/home">
+              會員服務
+            </NavLink>
+            <NavLink className="item" to="/home">
+              訂單查詢
+            </NavLink>
           </div>
           <div className="bottom">
-            <div className="item" onClick={logout}>
+            <NavLink className="item" onClick={logout}>
               登出
-            </div>
+            </NavLink>
           </div>
         </div>
       </>
     ) : (
       <div className="panel">
         <div className="top">
-          <div className="item">房型介紹</div>
+          <NavLink className="item" to="/home">
+            房型介紹
+          </NavLink>
         </div>
         <div className="bottom">
-          <div className="item">登入</div>
+          <NavLink className="item" to="/login">
+            登入
+          </NavLink>
         </div>
       </div>
     )
@@ -96,11 +111,11 @@ const Header = memo(() => {
           </div>
           {/* <div className="center"></div> */}
           <div className="right">
-            <InfoList />
+            <HeaderList />
             <div className="profile" onClick={handleShowPanel}>
               <img className="info" src={profile} />
               <img className="menu" src={menu} />
-              {showPanel && <Menu />}
+              {showPanel && <MenuList />}
             </div>
           </div>
         </div>

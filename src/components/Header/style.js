@@ -9,7 +9,6 @@ export const HeaderWrapper = styled('div')(
   .appHeader {
     display: flex;
     height: 50px;
-    line-height: 50px;
     border-bottom: 2px solid ${theme.textColor.black40};
   }
 
@@ -30,13 +29,16 @@ export const HeaderWrapper = styled('div')(
   }
 
   .right {
-    flex: 1;
+    // flex: 1;
+    width: 240px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    > div {
-      margin: auto 10px;
-    }
+    justify-content: space-between;
+    align-items: center;
+    
+   .list{
+      color: ${theme.textColor.black80};
+   }
   }
 
   .profile {
@@ -54,7 +56,6 @@ export const HeaderWrapper = styled('div')(
 
   .panel {
     position: absolute;
-    color: ${theme.textColor.black80};
     font-weight: bold;
     width: 100px;
     background-color: white;
@@ -63,11 +64,13 @@ export const HeaderWrapper = styled('div')(
     right: 0;
     z-index:999;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  }
 
     .item {
+      display:block;
       height: 30px;
       line-height: 30px;
-      cursor: pointer;
+      color: ${theme.textColor.black80};
       &:hover {
         color: ${theme.color.primaryBase};
       }
@@ -81,6 +84,6 @@ export const HeaderWrapper = styled('div')(
     .bottom {
       border-top: 1px solid #ddd;
     }
-  }
+  
 `
 )
