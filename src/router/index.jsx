@@ -1,27 +1,32 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React from 'react'
+import { Navigate } from 'react-router-dom'
 
-const Home = React.lazy(() => import("@/views/home/index.jsx"));
-const Detail = React.lazy(() => import("@/views/detail"));
-const Login = React.lazy(() => import("@/views/login"));
+const Home = React.lazy(() => import('@/views/home/index.jsx'))
+const Detail = React.lazy(() => import('@/views/detail'))
+const Login = React.lazy(() => import('@/views/login'))
+const Sign = React.lazy(() => import('@/views/sign'))
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <Navigate to="/home" />,
   },
   {
-    path: "/home",
+    path: '/home',
     element: <Home />,
   },
   {
-    path: "/detail",
+    path: '/detail',
     element: <Detail />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
-];
+  {
+    path: '/sign',
+    element: <Sign />,
+  },
+]
 
-export default routes;
+export default routes

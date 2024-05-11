@@ -39,6 +39,7 @@ const userSlice = createSlice({
     profile: {},
     errMsg: '',
     isLogin: false,
+    token: '',
   },
   reducers: {
     // 要更新 state 的 fn
@@ -51,6 +52,7 @@ const userSlice = createSlice({
       state.profile = {}
       state.isLogin = false
       state.errMsg = ''
+      state.token = ''
       removeCookie()
     },
     setErrMsg(state, { payload }) {

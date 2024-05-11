@@ -1,6 +1,6 @@
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles'
 
-export const CarouselWrapper = styled("div")(
+export const CarouselWrapper = styled('div')(
   ({ theme }) => `
   
   .header {
@@ -10,7 +10,7 @@ export const CarouselWrapper = styled("div")(
   .img {
     height: 280px;
     border-radius: 25px;
-    object-fit: cover;
+    object-fit: cover;  
   }
 
   // Override react-slick's css
@@ -23,5 +23,15 @@ export const CarouselWrapper = styled("div")(
     position: relative;
     bottom: -4px;
   }
+
+  .slick-prev{
+    left: 20px;
+    z-index:1;
+  }
+
+  .slick-next{
+    right: 40px;
+    z-index:1;
+  }
 `
-);
+)

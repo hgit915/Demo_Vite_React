@@ -17,7 +17,7 @@ const Carousel = memo((props) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1, // 每一次滑動幾張圖片
-    arrows: false,
+    arrows: true,
     autoplay: true,
     autoplaySpeed: 4000,
   }
