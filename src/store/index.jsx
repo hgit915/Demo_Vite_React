@@ -9,6 +9,7 @@ const store = configureStore({
     user: userReducer,
     sign: signReducer,
   },
+  devTools: process.env.NODE_ENV !== 'production',
 })
 
 export default store
