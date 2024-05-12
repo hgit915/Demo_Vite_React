@@ -11,7 +11,7 @@ function App() {
       <ErrorBoundary>
         <Layout>
           <Header />
-          <div className="page">{useRoutes(routes)}</div>
+          {useRoutes(routes)}
           <Footer />
         </Layout>
       </ErrorBoundary>

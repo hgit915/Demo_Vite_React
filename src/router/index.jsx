@@ -1,5 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
+import ProtectedRoute from '@/components/ProtectedRoute'
+import PublicRoute from '@/components/PublicRoute'
 
 const Home = React.lazy(() => import('@/views/home/index.jsx'))
 const Detail = React.lazy(() => import('@/views/detail'))
@@ -13,19 +15,31 @@ const routes = [
   },
   {
     path: '/home',
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
   },
   {
-    path: '/detail',
+    path: '/detail/:roomId',
     element: <Detail />,
   },
   {
     path: '/login',
-    element: <Login />,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
   {
     path: '/sign',
-    element: <Sign />,
+    element: (
+      <PublicRoute>
+        <Sign />
+      </PublicRoute>
+    ),
   },
 ]
 

@@ -1,13 +1,12 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-import { Button } from '@mui/material'
 import { HeaderWrapper } from './style'
 import logoImg from 'assets/svg/logoDark.svg'
 import menu from 'assets/svg/ic_menu.svg'
 import profile from 'assets/svg/ic_Profile.svg'
-import { getUserInfoAction, setLogout } from '@/store/modules/user'
+import { setLogout } from '@/store/modules/user'
 
 const Header = memo(() => {
   const dispatch = useDispatch()
@@ -17,15 +16,6 @@ const Header = memo(() => {
     userName: state.user.profile?.name,
   }))
   const [showPanel, setShowPanel] = useState(false)
-
-  const location = useLocation()
-
-  // 確認登入狀態並取得 userName
-  useEffect(() => {
-    if (location.pathname.toLowerCase() !== '/login' && location.pathname.toLowerCase() !== '/sign') {
-      dispatch(getUserInfoAction())
-    }
-  }, [dispatch])
 
   useEffect(() => {
     const windowHandleClick = () => {
