@@ -25,7 +25,7 @@ const Carousel = memo((props) => {
   return (
     <CarouselWrapper>
       <Slider {...settings}>
-        {imgList.map((item, idx) => (
+        {imgList?.slice(0, 4).map((item, idx) => (
           <img key={idx} src={`${IMG_URL}/jpg/${item}`} className="img" />
         ))}
       </Slider>
