@@ -11,17 +11,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 
 const CarouselModal = memo((props) => {
-  // const { imgList } = props
-  const imgList = [
-    'Room1.jpg',
-    'Room2.jpg',
-    'Room3.jpg',
-    'Room4.jpg',
-    'Room5.jpg',
-    'Room6.jpg',
-    'Room7.jpg',
-    'Room8.jpg',
-  ]
+  const { imgList } = props
   const [open, setOpen] = React.useState(false)
   const [slideImg, setSlideImg] = React.useState(0)
   const handleClose = () => setOpen(false)
@@ -68,12 +58,13 @@ const CarouselModal = memo((props) => {
           <Button className="close" size="medium" onClick={handleClose}>
             X
           </Button>
-          <div className="slider-container"></div>
-          <Slider {...settings}>
-            {imgList.map((item, idx) => (
-              <img key={idx} src={`${IMG_URL}/jpg/${item}`} className="img" />
-            ))}
-          </Slider>
+          <div className="slider-container">
+            <Slider {...settings}>
+              {imgList.map((item, idx) => (
+                <img key={idx} src={`${IMG_URL}/jpg/${item}`} className="img" />
+              ))}
+            </Slider>
+          </div>
         </Box>
       </ModalWrapper>
     </CarouselModalWrapper>

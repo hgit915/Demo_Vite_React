@@ -71,8 +71,6 @@ export const CarouselModalWrapper = styled('div')(
   border-radius: 10px;
   overflow-y: hidden;
   position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
 
   .left {
     flex: 3; 
