@@ -1,6 +1,6 @@
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles'
 
-export const LayoutWrapper = styled("div")(
+export const LayoutWrapper = styled('div')(
   ({ theme }) => `
   #root {
     max-width: 1280px;
@@ -17,4 +17,4 @@ export const LayoutWrapper = styled("div")(
     }
   }
 `
-);
+)

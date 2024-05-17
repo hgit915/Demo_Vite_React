@@ -1,23 +1,23 @@
-import React, { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { memo, useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { fetchHomeDataAction } from "@/store/modules/home";
-import { HomeWrapper } from "./style";
-import { Container } from "@mui/material";
-import RoomItems from "@/components/RoomItems";
+import { fetchRoomDataAction } from '@/store/modules/room'
+import { HomeWrapper } from './style'
+import { Container } from '@mui/material'
+import RoomItems from '@/components/RoomItems'
 
 const Home = memo(() => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { rooms } = useSelector(
     (state) => ({
-      rooms: state.home.rooms,
+      rooms: state.room.rooms,
     }),
     shallowEqual
-  );
+  )
 
   useEffect(() => {
-    dispatch(fetchHomeDataAction());
-  }, [dispatch]);
+    dispatch(fetchRoomDataAction())
+  }, [dispatch])
 
   return (
     <HomeWrapper>
@@ -27,12 +27,12 @@ const Home = memo(() => {
         <div className="desc">各種房型，任您挑選</div>
         <ul>
           {rooms?.map((item) => {
-            return <RoomItems key={item["_id"]} itemData={item} />;
+            return <RoomItems key={item['_id']} itemData={item} />
           })}
         </ul>
       </Container>
     </HomeWrapper>
-  );
-});
+  )
+})
 
-export default Home;
+export default Home

@@ -24,6 +24,9 @@ const routes = [
   {
     path: '/detail/:roomId',
     element: <Detail />,
+    // children: [
+    //   { path: 'room=:roomId', element: <Detail /> }, // 注意這裡的大小寫
+    // ],
   },
   {
     path: '/login',

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import homeReducer from './modules/home'
+import roomReducer from './modules/room'
 import userReducer from './modules/user'
 import signReducer from './modules/sign'
 
 const store = configureStore({
   reducer: {
-    home: homeReducer,
+    room: roomReducer,
     user: userReducer,
     sign: signReducer,
   },

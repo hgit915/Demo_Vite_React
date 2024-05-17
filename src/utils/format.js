@@ -5,7 +5,7 @@
  * @returns
  */
 
-export const toCommas = (price, showCurrency) => {
+export const toCommas = (price = 0, showCurrency) => {
   const formatOptions = {
     maximumFractionDigits: 0, // 將小數部分截斷為 0
   }
