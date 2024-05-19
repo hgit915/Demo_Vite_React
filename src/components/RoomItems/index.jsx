@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { RoomItemsWrapper } from './style'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
@@ -9,13 +10,18 @@ import { toCommas } from '@/utils/format'
 
 const RoomItems = memo((props) => {
   const { itemData } = props
+  const navigate = useNavigate()
+  const handleDetail = (roomId) => {
+    navigate(`/detail/${roomId}`)
+  }
+
   return (
     <RoomItemsWrapper>
       <div className="cover">
         <Carousel key={itemData['_id']} imgList={itemData.imageUrlList} />
       </div>
 
-      <div className="info">
+      <div onClick={() => handleDetail(itemData['_id'])} className="info">
         <div className="title">{itemData.name}</div>
         <div className="subTitle">{itemData.description}</div>
         <BasicInfo area={itemData.areaInfo} bed={itemData.bedInfo} maxPeople={itemData.maxPeople} />

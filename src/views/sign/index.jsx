@@ -91,7 +91,7 @@ const Sign = memo(() => {
         city: value.county,
       }
     })
-    setFormatCity((prev) => formatCity)
+    setFormatCity(() => formatCity)
   }
 
   const handleFormChange = (fieldName, value) => {
@@ -318,7 +318,6 @@ const Sign = memo(() => {
                 format="YYYY/MM/DD"
                 maxDate={today}
                 minDate={dayjs('1911-01-01')}
-                value={formData.value}
                 slotProps={{
                   textField: {
                     helperText: errors.birthdayErr ? '生日不得為空' : '',

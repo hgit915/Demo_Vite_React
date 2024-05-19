@@ -23,7 +23,11 @@ const routes = [
   },
   {
     path: '/detail/:roomId',
-    element: <Detail />,
+    element: (
+      <ProtectedRoute>
+        <Detail />
+      </ProtectedRoute>
+    ),
     // children: [
     //   { path: 'room=:roomId', element: <Detail /> }, // 注意這裡的大小寫
     // ],

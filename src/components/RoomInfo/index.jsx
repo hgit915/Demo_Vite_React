@@ -6,7 +6,7 @@ import { Title } from './style'
 
 const RoomInfo = memo((props) => {
   const { info, basicInfo } = props
-  console.log(props)
+
   return (
     <>
       <Title>房型基本資訊</Title>
