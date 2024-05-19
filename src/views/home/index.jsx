@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { fetchRoomDataAction } from '@/store/modules/room'
 import { HomeWrapper } from './style'
@@ -19,6 +20,11 @@ const Home = memo(() => {
     dispatch(fetchRoomDataAction())
   }, [dispatch])
 
+  const navigate = useNavigate()
+  const directToDetail = (roomId) => {
+    navigate(`/detail/${roomId}`)
+  }
+
   return (
     <HomeWrapper>
       <div className="carousel"></div>
@@ -27,7 +33,7 @@ const Home = memo(() => {
         <div className="desc">各種房型，任您挑選</div>
         <ul>
           {rooms?.map((item) => {
-            return <RoomItems key={item['_id']} itemData={item} />
+            return <RoomItems key={item['_id']} directToPage={directToDetail} itemData={item} />
           })}
         </ul>
       </Container>

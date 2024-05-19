@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { RoomItemsWrapper } from './style'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
@@ -8,26 +7,22 @@ import BasicInfo from '@/components/BasicInfo'
 import Carousel from '@/components/Carousel'
 import { toCommas } from '@/utils/format'
 
-const RoomItems = memo((props) => {
-  const { itemData } = props
-  const navigate = useNavigate()
-  const handleDetail = (roomId) => {
-    navigate(`/detail/${roomId}`)
-  }
+const RoomItems = memo(({ itemData, directToPage }) => {
+  const { name, description, imageUrlList, areaInfo, bedInfo, maxPeople, price, _id } = itemData
 
   return (
     <RoomItemsWrapper>
       <div className="cover">
-        <Carousel key={itemData['_id']} imgList={itemData.imageUrlList} />
+        <Carousel key={_id} imgList={imageUrlList} />
       </div>
 
-      <div onClick={() => handleDetail(itemData['_id'])} className="info">
-        <div className="title">{itemData.name}</div>
-        <div className="subTitle">{itemData.description}</div>
-        <BasicInfo area={itemData.areaInfo} bed={itemData.bedInfo} maxPeople={itemData.maxPeople} />
+      <div onClick={() => directToPage(_id)} className="info">
+        <div className="title">{name}</div>
+        <div className="subTitle">{description}</div>
+        <BasicInfo area={areaInfo} bed={bedInfo} maxPeople={maxPeople} />
         <div className="linear"></div>
         <div className="price">
-          NT {toCommas(itemData.price, true)}
+          NT {toCommas(price, true)}
           <ArrowForwardIcon fontSize="large" color="primary" />
         </div>
       </div>
@@ -37,6 +32,7 @@ const RoomItems = memo((props) => {
 
 RoomItems.propTypes = {
   itemData: PropTypes.object,
+  directToPage: PropTypes.func,
 }
 
 export default RoomItems
