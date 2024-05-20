@@ -73,8 +73,6 @@ const Detail = memo(() => {
   }
 
   const handleSubmit = () => {
-    // 登入中才可以預訂
-    if (!isLogin) navigate('/login')
     // 清除舊的錯誤訊息
     setError({
       startDate: '',
@@ -106,6 +104,18 @@ const Detail = memo(() => {
       }))
     }
     if (errFlag) return
+
+    // 登入中才可以預訂
+    if (!isLogin) {
+      navigate('/login')
+      return
+    }
+
+    navigate(
+      `/order/roomId=${roomId}&people=${data.people}&startDate=${startDateString.format(
+        'YYYY-MM-DD'
+      )}&endDate=${endDateString.format('YYYY-MM-DD')}`
+    )
   }
 
   return (
@@ -120,12 +130,14 @@ const Detail = memo(() => {
             <div className="name">{roomData.name}</div>
             <div className="desc">{roomData.description}</div>
             <RoomInfo
-              info={{
-                layoutInfo: roomData.layoutInfo,
-                facilityInfo: roomData.facilityInfo,
-                amenityInfo: roomData.amenityInfo,
-              }}
+              sectionsInfo={[
+                { title: '房間格局', info: roomData.layoutInfo },
+                { title: '房內設備', info: roomData.facilityInfo },
+                { title: '備品提供', info: roomData.amenityInfo },
+              ]}
               basicInfo={{ areaInfo: roomData.areaInfo, bedInfo: roomData.bedInfo, maxPeople: roomData.maxPeople }}
+              rule={true}
+              basicStyle={{ marginBottom: '48px' }}
             />
           </LeftWrapper>
           <RightWrapper>

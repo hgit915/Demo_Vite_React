@@ -1,10 +1,10 @@
 import { styled } from '@mui/material/styles'
 
 export const Title = styled('div')(
-  ({ theme }) => `
-  ${theme.components.RoomInfoTitle}
-  font-size:24px;
-  font-weight: 800;
-  margin-bottom: 15px;
+  ({ theme, $titleStyle }) => `
+    ${theme.components.RoomInfoTitle}
+    font-size: ${$titleStyle?.fontSize || '24px'};
+    font-weight: 800;
+    margin-bottom: ${$titleStyle?.marginBottom || '15px'};
   `
 )
