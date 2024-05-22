@@ -1,1 +1,0 @@
-const c=(r=0,a)=>{const t={maximumFractionDigits:0};return a&&(t.style="currency",t.currency="TWD"),r.toLocaleString("zh-TW",t)},e=r=>{const a=r.split("&"),t={};return a.forEach(s=>{const[o,n]=s.split("=");t[o]=n}),t};export{e as p,c as t};
