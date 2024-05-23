@@ -7,7 +7,8 @@ const Home = React.lazy(() => import('@/views/home/index.jsx'))
 const Detail = React.lazy(() => import('@/views/detail'))
 const Login = React.lazy(() => import('@/views/login'))
 const Sign = React.lazy(() => import('@/views/sign'))
-
+const Order = React.lazy(() => import('@/views/order'))
+const OrderSuccess = React.lazy(() => import('@/views/orderSuccess'))
 const routes = [
   {
     path: '/',
@@ -28,9 +29,22 @@ const routes = [
         <Detail />
       </ProtectedRoute>
     ),
-    // children: [
-    //   { path: 'room=:roomId', element: <Detail /> }, // 注意這裡的大小寫
-    // ],
+  },
+  {
+    path: '/order/:params',
+    element: (
+      <ProtectedRoute>
+        <Order />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/orderSuccess/:params',
+    element: (
+      <ProtectedRoute>
+        <OrderSuccess />
+      </ProtectedRoute>
+    ),
   },
   {
     path: '/login',

@@ -382,8 +382,16 @@ function formatCountry(ZipCodeMap) {
     return array.indexOf(value) === index
   })
 }
+// 列出行政區
 const countryData = formatCountry(ZipCodeMap)
+// 列出鄉鎮
 const city = ZipCodeMap.map((value) => value.county)
+// 列出郵遞區號
 const zipCodeList = ZipCodeMap.map((value) => value.zipcode)
+// 用郵遞區號查找行政區、鄉鎮
+const getCityCountry = (code) => {
+  const [result] = ZipCodeMap.filter(({ zipcode }) => zipcode === code)
+  return result || null
+}
 
-export { countryData, city, zipCodeList, ZipCodeMap }
+export { countryData, city, zipCodeList, ZipCodeMap, getCityCountry }

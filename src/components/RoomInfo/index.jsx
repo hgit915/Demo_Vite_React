@@ -6,18 +6,17 @@ import RoomInfoBox from '@/components/RoomInfoBox'
 import { Title } from './style'
 
 const RoomInfo = memo((props) => {
-  const { sectionsInfo, basicInfo, rule, sectionStyle, basicStyle } = props
+  const { sectionsInfo, basicInfo, rule, sectionStyle, basicStyle, infoBoxStyle } = props
 
   return (
     <>
       <Title $titleStyle={sectionStyle}>房型基本資訊</Title>
       <BasicInfo {...basicInfo} style={basicStyle} />
-
       {sectionsInfo &&
         sectionsInfo.map((section, index) => (
           <div key={index}>
             <Title $titleStyle={sectionStyle}>{section.title}</Title>
-            <RoomInfoBox info={section.info} />
+            <RoomInfoBox style={infoBoxStyle} info={section.info} />
           </div>
         ))}
 
@@ -46,12 +45,14 @@ RoomInfo.propTypes = {
   rule: PropTypes.bool,
   sectionStyle: PropTypes.object,
   basicStyle: PropTypes.object,
+  infoBoxStyle: PropTypes.object,
 }
 
 RoomInfo.defaultProps = {
   rule: false,
   sectionStyle: {},
   basicStyle: {},
+  infoBoxStyle: {},
 }
 
 export default RoomInfo
