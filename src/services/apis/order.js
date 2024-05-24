@@ -12,3 +12,9 @@ export const createOrder = (payload) => axios.post('/orders', payload)
  * @param {object} payload 訂購人的名稱、信箱
  */
 export const sendOrderEmail = (payload) => axios.post('/orders/sendOrderEmail', payload)
+
+/**
+ * [訂單] - 查詢訂單
+ * @param {object} payload 訂購人的名稱、信箱
+ */
+export const getOrderById = (orderId) => axios.get(`/orders/${orderId}`)
