@@ -5,28 +5,13 @@ import IconButton from '@mui/material/IconButton'
 export const DetailWrapper = styled(Box)(
   ({ theme }) => `
  
-  background-color:${theme.color.primaryTint};
-  padding-top: 30px;
-
-  .top,.bottom{
-    margin-bottom:30px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .bottom { 
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    padding: 30px 60px;
-    margin-top: 60px;
-  }
+  ${theme.components.ContainerWrapper};
   `
 )
 
 export const LeftWrapper = styled(Box)(
   ({ theme }) => `
-  margin-right: 70px;
+ ${theme.components.LeftBoxWrapper};
   .name{
     font-size: 44px;
     font-weight: bold;
@@ -40,14 +25,7 @@ export const LeftWrapper = styled(Box)(
 
 export const RightWrapper = styled(Box)(
   ({ theme }) => `
-  min-width: 300px;
-  max-width: 350px;
-  height: 100%;
-  box-sizing: border-box;
-  border-radius: 20px;
-  background-color:white;
-  padding: 30px;
-  color:${theme.textColor.black80};
+  ${theme.components.RightBoxWrapper};
 
   .subtitle{
     font-weight: bold;

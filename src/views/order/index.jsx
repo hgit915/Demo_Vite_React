@@ -16,9 +16,8 @@ import { fetchRoomInfoAction } from '@/store/modules/room'
 import { createOrderAction, setErrMsg } from '@/store/modules/order'
 
 import { IMG_URL } from '@/services/request/config'
-import { parseParams, dayOfWeek, toCommas } from '@/utils/format'
+import { parseParams, dayOfWeek, toCommas, countDay } from '@/utils/format'
 import { getCityCountry } from '@/utils/zipcodes'
-import dayjs from 'dayjs'
 
 const Order = memo(() => {
   const dispatch = useDispatch()
@@ -56,7 +55,7 @@ const Order = memo(() => {
       setRoomData(detail)
 
       // 計算入住天數
-      const day = dayjs(endDate).diff(startDate, 'day')
+      const day = countDay(startDate, endDate)
       setCountData((prev) => ({
         ...prev,
         day,

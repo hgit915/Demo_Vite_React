@@ -60,6 +60,43 @@ const theme = createTheme({
       border-left: 5px solid #BF9D7D;
       padding-left: 15px;
     `,
+    ContainerWrapper: `
+      background-color: #FAF7F5;
+      padding: 30px 0;
+    
+      .top,.bottom{
+        margin-bottom: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+    
+      .bottom { 
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        padding: 0px 60px;
+        margin-top: 60px;
+      }
+    
+      .top {
+        font-size:32px;
+        font-weight: bold;
+      }
+    `,
+    RightBoxWrapper: `
+      min-width: 300px;
+      max-width: 350px;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 20px;
+      background-color:white;
+      padding: 30px;
+      color: "#4B4B4B";
+    `,
+    LeftBoxWrapper: `
+      margin-right: 70px;
+      flex:1;  
+    `,
   },
 })
 

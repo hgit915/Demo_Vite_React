@@ -3,28 +3,8 @@ import Box from '@mui/material/Box'
 
 export const OrderWrapper = styled(Box)(
   ({ theme }) => `
- 
-  background-color:${theme.color.primaryTint};
-  padding: 30px 0;
- 
-  .top,.bottom{
-    margin-bottom: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .bottom { 
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    padding: 0px 60px;
-    margin-top: 60px;
-  }
-
-  .top {
-    font-size:32px;
-    font-weight: bold;
-  }
+  
+  ${theme.components.ContainerWrapper};
 
   .hr {
     margin: 30px 0;
@@ -56,8 +36,7 @@ export const OrderWrapper = styled(Box)(
 
 export const LeftWrapper = styled(Box)(
   ({ theme }) => `
-  margin-right: 70px;
-  flex:1;
+  ${theme.components.LeftBoxWrapper};
   .name{
     font-size: 44px;
     font-weight: bold;
@@ -71,14 +50,7 @@ export const LeftWrapper = styled(Box)(
 
 export const RightWrapper = styled(Box)(
   ({ theme }) => `
-  min-width: 300px;
-  max-width: 350px;
-  height: 100%;
-  box-sizing: border-box;
-  border-radius: 20px;
-  background-color:white;
-  padding: 30px;
-  color:${theme.textColor.black80};
+  ${theme.components.RightBoxWrapper}
 
   img {
     width: 100%;

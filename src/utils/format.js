@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 /**
  * 加上 comma、幣別
  * @param {*} price
@@ -44,4 +46,18 @@ export const dayOfWeek = (formatDate) => {
   var day = date.getDay() // or "new Date().getDay()";
 
   return `(${day_list[day]})`
+}
+
+/**
+ * 計算天數
+ * @param {*} startDate
+ * @param {*} endDate
+ * @returns
+ */
+export const countDay = (startDate, endDate) => {
+  return dayjs(endDate).diff(startDate, 'day')
+}
+
+export const formatDate = (date) => {
+  return dayjs().format('YYYY-MM-DD')
 }
