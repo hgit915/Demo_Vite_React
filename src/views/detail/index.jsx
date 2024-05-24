@@ -23,6 +23,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { toCommas } from '@/utils/format'
 
 import { fetchRoomInfoAction } from '@/store/modules/room'
+import { getUserData } from '@/store/selector/user'
+import { getRoomData } from '@/store/selector/room'
 import { useDispatch, useSelector } from 'react-redux'
 
 const today = dayjs()
@@ -30,10 +32,8 @@ const Detail = memo(() => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { roomId } = useParams()
-  const { detail, isLogin } = useSelector((state) => ({
-    detail: state.room.detail,
-    isLogin: state.user.isLogin,
-  }))
+  const { isLogin } = useSelector(getUserData)
+  const { detail } = useSelector(getRoomData)
   const [roomData, setRoomData] = useState(null)
 
   useEffect(() => {

@@ -15,6 +15,10 @@ import { OrderWrapper, LeftWrapper, RightWrapper } from './style'
 import { fetchRoomInfoAction } from '@/store/modules/room'
 import { createOrderAction, setErrMsg } from '@/store/modules/order'
 
+import { getOrderData } from '@/store/selector/order'
+import { getUserData } from '@/store/selector/user'
+import { getRoomData } from '@/store/selector/room'
+
 import { IMG_URL } from '@/services/request/config'
 import { parseParams, dayOfWeek, toCommas, countDay } from '@/utils/format'
 import { getCityCountry } from '@/utils/zipcodes'
@@ -24,13 +28,11 @@ const Order = memo(() => {
   const { params } = useParams()
   const navigate = useNavigate()
   const { roomId, people, startDate, endDate } = parseParams(params)
-  const { detail, isLogin, userInfo, orderSuccess, orderInfo } = useSelector((state) => ({
-    detail: state.room.detail,
-    isLogin: state.user.isLogin,
-    userInfo: state.user.profile,
-    orderSuccess: state.order.orderSuccess,
-    orderInfo: state.order.orderInfo,
-  }))
+
+  const { detail } = useSelector(getRoomData)
+  const { isLogin, userInfo } = useSelector(getUserData)
+  const { orderSuccess, orderInfo } = useSelector(getOrderData)
+
   const [roomData, setRoomData] = useState(null)
   const [countData, setCountData] = useState({
     day: 0,
