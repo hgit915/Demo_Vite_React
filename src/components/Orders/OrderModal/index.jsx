@@ -21,7 +21,7 @@ const OrderModal = memo((props) => {
       onClose={orderErrMsg ? handleClose : undefined}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      $errMsg={orderErrMsg}
+      errMsg={orderErrMsg}
     >
       <Box className="boxModal">
         {orderErrMsg ? (

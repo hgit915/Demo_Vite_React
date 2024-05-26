@@ -91,7 +91,7 @@ const theme = createTheme({
       border-radius: 20px;
       background-color:white;
       padding: 30px;
-      color: "#4B4B4B";
+      color: #4B4B4B;
     `,
     LeftBoxWrapper: `
       margin-right: 70px;

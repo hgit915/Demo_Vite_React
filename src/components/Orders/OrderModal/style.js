@@ -8,11 +8,11 @@ export const OrderModalWrapper = styled(ModalWrapper)(
     align-items: center;
     flex-direction: column;
     height: 50%;
-    justify-content: ${errMsg ? 'center' : 'space-evenly'}} 
+    justify-content: ${errMsg ? 'space-evenly' : 'center'}} 
 
   .errMsg {
     color: ${theme.textColor.ErrorBase} ;
-    fontSize: 14px ;
+    font-size: 14px ;
   }
 
   .processing {
