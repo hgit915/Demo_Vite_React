@@ -59,5 +59,5 @@ export const countDay = (startDate, endDate) => {
 }
 
 export const formatDate = (date) => {
-  return dayjs().format('YYYY-MM-DD')
+  return dayjs(date).format('YYYY-MM-DD')
 }

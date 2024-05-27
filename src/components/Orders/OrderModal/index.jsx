@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
+import { getOrderData } from '@/store/selector/order'
 
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -11,9 +12,7 @@ import { OrderModalWrapper } from './style'
 
 const OrderModal = memo((props) => {
   const { isOpen, handleClose } = props
-  const { orderErrMsg } = useSelector((state) => ({
-    orderErrMsg: state.order.errMsg,
-  }))
+  const { orderErrMsg } = useSelector(getOrderData)
 
   return (
     <OrderModalWrapper
@@ -21,7 +20,7 @@ const OrderModal = memo((props) => {
       onClose={orderErrMsg ? handleClose : undefined}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      errMsg={orderErrMsg}
+      $errMsg={orderErrMsg}
     >
       <Box className="boxModal">
         {orderErrMsg ? (
