@@ -14,6 +14,7 @@ import { fetchOrderByIdAction } from '@/store/modules/order'
 import { getOrderData } from '@/store/selector/order'
 
 const OrderSuccess = () => {
+  const navigate = useNavigate()
   const { params } = useParams()
   const { orderNo } = parseParams(params)
   const dispatch = useDispatch()
@@ -33,13 +34,15 @@ const OrderSuccess = () => {
           <LeftWrapper>
             <div className="successTitle">
               <CheckCircleIcon className="successIcon" />
-              恭喜 {userInfo.name}，您已預訂成功!
+              恭喜 {userInfo.name}，您已{orderInfo.status > -1 ? '預定' : '取消'}成功!
             </div>
             <p className="hint">我們已將訂房資訊及詳細內容寄到您的電子信箱，入住時記得向櫃檯人員出示訂房人證件唷</p>
             <hr className="hr" />
 
             <p className="desc">立即查看您的訂單紀錄</p>
-            <Button variant="contained">前往我的訂單</Button>
+            <Button variant="contained" onClick={() => navigate('/dashboard/orders')}>
+              前往我的訂單
+            </Button>
 
             <hr className="hr" />
 

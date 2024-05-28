@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react' // 引入 React.StrictMode 需要
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/system'

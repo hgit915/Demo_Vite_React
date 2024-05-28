@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Button from '@mui/material/Button'
 import Skeleton from '@mui/material/Skeleton'
@@ -25,7 +26,6 @@ import { toCommas } from '@/utils/format'
 import { fetchRoomInfoAction } from '@/store/modules/room'
 import { getUserData } from '@/store/selector/user'
 import { getRoomData } from '@/store/selector/room'
-import { useDispatch, useSelector } from 'react-redux'
 
 const today = dayjs()
 const Detail = memo(() => {

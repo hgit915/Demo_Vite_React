@@ -13,7 +13,7 @@ import OrderModal from '@/components/Orders/OrderModal'
 import { OrderWrapper, LeftWrapper, RightWrapper } from './style'
 
 import { fetchRoomInfoAction } from '@/store/modules/room'
-import { createOrderAction, setErrMsg } from '@/store/modules/order'
+import { createOrderAction, setOrderStatus, setErrMsg } from '@/store/modules/order'
 
 import { getOrderData } from '@/store/selector/order'
 import { getUserData } from '@/store/selector/user'
@@ -42,9 +42,10 @@ const Order = memo(() => {
   // 訂單建立成功，導轉至訂單成功頁面
   useEffect(() => {
     if (orderSuccess) {
+      dispatch(setOrderStatus(false))
       navigate(`/orderSuccess/orderNo=${orderInfo['_id']}`)
     }
-  }, [navigate, orderSuccess, orderInfo])
+  }, [dispatch, navigate, orderSuccess, orderInfo])
 
   // 從 URL 取得房間 ID => 取得房間資訊
   useEffect(() => {
