@@ -9,6 +9,10 @@ const Login = React.lazy(() => import('@/views/login'))
 const Sign = React.lazy(() => import('@/views/sign'))
 const Order = React.lazy(() => import('@/views/order'))
 const OrderSuccess = React.lazy(() => import('@/views/orderSuccess'))
+const Dashboard = React.lazy(() => import('@/views/dashboard'))
+const Account = React.lazy(() => import('@/components/Account'))
+const UserOrders = React.lazy(() => import('@/components/UserOrders'))
+
 const routes = [
   {
     path: '/',
@@ -61,6 +65,31 @@ const routes = [
         <Sign />
       </PublicRoute>
     ),
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: '',
+        name: '',
+        element: <Account />,
+      },
+      {
+        path: 'account',
+        name: 'account',
+        element: <Account />,
+      },
+      {
+        path: 'orders',
+        name: 'UserOrders',
+        element: <UserOrders />,
+      },
+    ],
   },
 ]
 
