@@ -49,10 +49,6 @@ const userSlice = createSlice({
       setCookie(payload.token)
     },
     setLogout(state) {
-      state.profile = {}
-      state.isLogin = false
-      state.errMsg = ''
-      state.token = ''
       removeCookie()
     },
     setErrMsg(state, { payload }) {
