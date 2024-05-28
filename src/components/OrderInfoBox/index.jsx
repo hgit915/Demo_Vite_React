@@ -7,12 +7,12 @@ import { IMG_URL } from '@/services/request/config'
 import { dayOfWeek, countDay, formatDate, toCommas } from '@/utils/format'
 
 const OrderInfoBox = memo((props) => {
-  const { roomId, checkInDate, checkOutDate, peopleNum, orderNo } = props
+  const { roomId, checkInDate, checkOutDate, peopleNum, orderNo, status } = props
 
   return (
-    <OrderInfoBoxWrapper>
+    <OrderInfoBoxWrapper status={status}>
       <div className="orderNo">預定參考編號 : {orderNo} </div>
-      <p className="orderHint">即將來的行程</p>
+      <p className="orderHint">{status > -1 ? '訂單成立完成' : '訂單已取消'}</p>
       <img src={`${IMG_URL}/jpg/${roomId.imageUrl}`} alt="" />
       <div className="roomInfo">
         <span className="orderDesc">
@@ -23,7 +23,10 @@ const OrderInfoBox = memo((props) => {
         <div className="orderSubTitle gray">
           退房：{`${formatDate(checkOutDate)} ${dayOfWeek(checkOutDate)}`}，12:00 前
         </div>
-        <div className="price">NT {toCommas(roomId.price * countDay(checkInDate, checkOutDate), true)} </div>
+        <div className="price">
+          每晚：NT {toCommas(roomId.price, true)} ｜ 總金額：NT{' '}
+          {toCommas(roomId.price * countDay(checkInDate, checkOutDate), true)}{' '}
+        </div>
       </div>
       <hr className="hr" />
 
@@ -47,6 +50,7 @@ OrderInfoBox.propTypes = {
   checkOutDate: PropTypes.string,
   peopleNum: PropTypes.number,
   orderNo: PropTypes.string,
+  status: PropTypes.number,
 }
 
 export default OrderInfoBox

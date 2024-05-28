@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 
 export const OrderInfoBoxWrapper = styled(Box)(
-  ({ theme }) => `
+  ({ theme, status }) => `
 
   width: 100%;
   .orderNo {
@@ -11,10 +11,15 @@ export const OrderInfoBoxWrapper = styled(Box)(
   }
 
   .orderHint {
+    display:inline-block;
     font-weight: bold;
     font-size: 16px;
     margin-top: 5px;
     margin-bottom: 10px;
+    padding: 5px;
+    background-color: ${status > -1 ? theme.color.primary80 : theme.textColor.ErrorBase};
+    color: ${theme.textColor.white};
+    
   }
 
   img {

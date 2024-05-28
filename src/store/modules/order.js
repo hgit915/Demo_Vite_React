@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { createOrder, sendOrderEmail, getOrderById } from '@/services/apis/order'
+import { createOrder, sendOrderEmail, getOrderById, deleteOrderById } from '@/services/apis/order'
 
 /**
  * 建立訂單
@@ -30,6 +30,18 @@ export const fetchOrderByIdAction = createAsyncThunk('order/fetchOrderById', asy
   }
 })
 
+/**
+ * 刪除訂單
+ */
+export const deleteOrderByIdAction = createAsyncThunk('order/deleteOrderById', async (param, { rejectWithValue }) => {
+  try {
+    let res = await deleteOrderById(param)
+    return res.result
+  } catch (error) {
+    return rejectWithValue(error)
+  }
+})
+
 const orderSlice = createSlice({
   name: 'order',
   initialState: {
@@ -47,6 +59,9 @@ const orderSlice = createSlice({
     setCustomerInfo(state, { payload }) {
       state.customerInfo = payload
     },
+    setOrderStatus(state, { payload }) {
+      state.orderSuccess = payload
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createOrderAction.fulfilled, (state, { payload }) => {
@@ -63,8 +78,14 @@ const orderSlice = createSlice({
     builder.addCase(fetchOrderByIdAction.rejected, (state, { payload }) => {
       state.errMsg = payload
     })
+    builder.addCase(deleteOrderByIdAction.fulfilled, (state, { payload }) => {
+      // state.orderInfo = payload
+    })
+    builder.addCase(deleteOrderByIdAction.rejected, (state, { payload }) => {
+      state.errMsg = payload
+    })
   },
 })
 
-export const { setErrMsg, setCustomerInfo } = orderSlice.actions
+export const { setErrMsg, setCustomerInfo, setOrderStatus } = orderSlice.actions
 export default orderSlice.reducer

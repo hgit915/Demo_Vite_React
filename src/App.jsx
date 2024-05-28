@@ -4,6 +4,7 @@ import Layout from 'components/Layout/index'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/Error'
+import Loading from '@/components/Loading'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <ErrorBoundary>
         <Layout>
           <Header />
+          <Loading />
           {useRoutes(routes)}
           <Footer />
         </Layout>
