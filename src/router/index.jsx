@@ -91,6 +91,11 @@ const routes = [
       },
     ],
   },
+  // 加入預設的路由，當沒有匹配時導航到 home
+  {
+    path: '*',
+    element: <Navigate to="/home" />,
+  },
 ]
 
 export default routes
