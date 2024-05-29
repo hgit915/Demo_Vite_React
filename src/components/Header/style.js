@@ -16,7 +16,6 @@ export const HeaderWrapper = styled('div')(
     flex: 1;
     img {
       height: 100%;
-      cursor: pointer;
       padding-top: 2px;
       margin-left: 20px;
     }
@@ -29,15 +28,22 @@ export const HeaderWrapper = styled('div')(
   }
 
   .right {
-    // flex: 1;
-    width: 240px;
+    max-width: 350px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap:20px;
     
+    .welcome {
+      color: ${theme.color.primaryBase};
+    }
+
    .list{
       color: ${theme.textColor.black80};
+      &:hover {
+        color: ${theme.color.primaryBase};
+      }
    }
   }
 

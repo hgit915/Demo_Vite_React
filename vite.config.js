@@ -5,8 +5,6 @@ import path from 'path'
 const resolve = (pathname) => path.resolve(__dirname, pathname)
 
 // https://vitejs.dev/config/
-console.log('---- process.env.NODE_ENV----')
-console.log(process.env.NODE_ENV)
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/Demo_Vite_React/' : '/',
   plugins: [react()],

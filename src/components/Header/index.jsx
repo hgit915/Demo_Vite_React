@@ -7,14 +7,12 @@ import logoImg from 'assets/svg/logoDark.svg'
 import menu from 'assets/svg/ic_menu.svg'
 import profile from 'assets/svg/ic_Profile.svg'
 import { setLogout } from '@/store/modules/user'
+import { getUserData } from '@/store/selector/user'
 
 const Header = memo(() => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { isLogin, userName } = useSelector((state) => ({
-    isLogin: state.user.isLogin,
-    userName: state.user.profile?.name,
-  }))
+  const { isLogin, userName } = useSelector(getUserData)
   const [showPanel, setShowPanel] = useState(false)
 
   useEffect(() => {
@@ -31,17 +29,17 @@ const Header = memo(() => {
     e.stopPropagation() // 阻止事件向上冒泡到 window
     setShowPanel(true)
   }
-  const logout = () => {
-    dispatch(setLogout())
-    navigate('/')
+  const logout = async () => {
+    await dispatch(setLogout())
+    navigate('/login')
   }
 
   const HeaderList = () =>
     isLogin ? (
       <>
-        <div>Hi {userName} 歡迎回來!</div>
-        <NavLink className="list" onClick={logout}>
-          登出
+        <div className="welcome">Hi {userName} 歡迎回來!</div>
+        <NavLink className="list" to="/home">
+          房型介紹
         </NavLink>
       </>
     ) : (
@@ -61,10 +59,10 @@ const Header = memo(() => {
       <>
         <div className="panel">
           <div className="top">
-            <NavLink className="item" to="/home">
+            <NavLink className="item" to="/dashboard/account">
               會員服務
             </NavLink>
-            <NavLink className="item" to="/home">
+            <NavLink className="item" to="/dashboard/orders">
               訂單查詢
             </NavLink>
           </div>
@@ -95,11 +93,8 @@ const Header = memo(() => {
       <HeaderWrapper>
         <div className="appHeader">
           <div className="left">
-            <a href="https://google.com" target="blank">
-              <img alt="hotel logo" src={logoImg} />
-            </a>
+            <img alt="hotel logo" src={logoImg} />
           </div>
-          {/* <div className="center"></div> */}
           <div className="right">
             <HeaderList />
             <div className="profile" onClick={handleShowPanel}>
