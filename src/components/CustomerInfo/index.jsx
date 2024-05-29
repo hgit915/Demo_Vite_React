@@ -1,4 +1,4 @@
-import React, { memo, useImperativeHandle, forwardRef } from 'react'
+import react, { memo, useImperativeHandle, forwardRef, useState } from 'react'
 
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
@@ -17,7 +17,7 @@ const CustomerInfo = memo(
       checkForm,
       setFormValue,
     }))
-    const [formatCity, setFormatCity] = React.useState('')
+    const [formatCity, setFormatCity] = useState('')
 
     // 輸入欄位初始化
     const initValue = {
@@ -28,7 +28,7 @@ const CustomerInfo = memo(
       city: '',
       address: '',
     }
-    const [formData, setFormData] = React.useState(initValue)
+    const [formData, setFormData] = useState(initValue)
 
     // 錯誤訊息初始化
     const initialState = {
@@ -39,7 +39,7 @@ const CustomerInfo = memo(
       cityErr: false,
       addressErr: false,
     }
-    const [errors, setErrors] = React.useState(initialState)
+    const [errors, setErrors] = useState(initialState)
 
     // 用行政區篩選出鄉鎮
     const handleChangeCity = (countryName) => {

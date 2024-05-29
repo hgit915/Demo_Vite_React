@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import react, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,15 +21,15 @@ import { loginAction, setErrMsg } from '@/store/modules/user'
 const Login = memo(() => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [showPassword, setShowPassword] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [password, setPassWord] = React.useState('')
-  const [emptyErr, setEmptyErr] = React.useState({ email: false, password: false })
+  const [showPassword, setShowPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassWord] = useState('')
+  const [emptyErr, setEmptyErr] = useState({ email: false, password: false })
   const { errMsg, isLogin } = useSelector(
     (state) => ({ isLogin: state.user.isLogin, errMsg: state.user.errMsg }),
     shallowEqual
   )
-  const [errAllMsg, setAllMsg] = React.useState(errMsg)
+  const [errAllMsg, setAllMsg] = useState(errMsg)
 
   useEffect(() => {
     if (isLogin) {

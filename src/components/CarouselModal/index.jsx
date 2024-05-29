@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import react, { memo, useState } from 'react'
 import Slider from 'react-slick'
 
 import { IMG_URL } from '@/services/request/config'
@@ -12,8 +12,8 @@ import Button from '@mui/material/Button'
 
 const CarouselModal = memo((props) => {
   const { imgList } = props
-  const [open, setOpen] = React.useState(false)
-  const [slideImg, setSlideImg] = React.useState(0)
+  const [open, setOpen] = useState(false)
+  const [slideImg, setSlideImg] = useState(0)
   const handleClose = () => setOpen(false)
   const handleOpen = (index) => {
     setSlideImg(index)

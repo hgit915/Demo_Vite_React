@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useRef } from 'react'
+import react, { memo, useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 
@@ -91,7 +91,7 @@ const Order = memo(() => {
 
   // 套用會員資料的選項
   const customerRef = useRef()
-  const [getMemInfo, setGetMemInfo] = React.useState(true)
+  const [getMemInfo, setGetMemInfo] = useState(true)
   const handleChange = () => {
     setGetMemInfo((prevState) => !prevState)
   }
@@ -112,7 +112,7 @@ const Order = memo(() => {
   }, [getMemInfo, userInfo, isLogin])
 
   // 控制 modal 開關
-  const [modalOpen, setModalOpen] = React.useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const handleClose = () => setModalOpen(false)
 
   return (

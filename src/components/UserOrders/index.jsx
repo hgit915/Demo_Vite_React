@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import react, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,7 +36,6 @@ const UserOrders = memo(() => {
 
   useEffect(() => {
     if (orderInfo) {
-      console.log('object')
       dispatch(setIsLoading(false))
       setData(orderInfo)
       setModalOpen(false)
@@ -62,7 +61,7 @@ const UserOrders = memo(() => {
     setShowItems((prev) => prev + limit)
   }
 
-  const [modalOpen, setModalOpen] = React.useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const handleModal = (isOpen) => setModalOpen(isOpen)
 
   const handleCancel = async () => {

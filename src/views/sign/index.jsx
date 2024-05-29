@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import react, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AccountPageWrapper } from '@/components/AccountPage/style'
@@ -35,11 +35,11 @@ const Sign = memo(() => {
   const navigate = useNavigate()
 
   // 進度條設定
-  const [nextStep, setNextStep] = React.useState(0)
+  const [nextStep, setNextStep] = useState(0)
   const steps = ['輸入信箱及密碼', '填寫基本資料']
 
   // 欄位資料
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     email: '',
     password: '',
     checkPassWord: '',
@@ -63,7 +63,7 @@ const Sign = memo(() => {
     cityErr: false,
     addressErr: false,
   }
-  const [errors, setErrors] = React.useState(initialState)
+  const [errors, setErrors] = useState(initialState)
   const { allErrMsg, showFinal, isLogin } = useSelector((state) => ({
     allErrMsg: state.sign.errMsg,
     showFinal: state.sign.showFinal,
@@ -77,9 +77,9 @@ const Sign = memo(() => {
   }, [isLogin])
 
   // 顯示密碼否
-  const [showPassword, setShowPassword] = React.useState('')
-  const [showCheckPwd, setShowCheckPwd] = React.useState('')
-  const [formatCity, setFormatCity] = React.useState('')
+  const [showPassword, setShowPassword] = useState('')
+  const [showCheckPwd, setShowCheckPwd] = useState('')
+  const [formatCity, setFormatCity] = useState('')
 
   const handleChangeCity = (countryName) => {
     const formatCity = ZipCodeMap.filter((value) => {
