@@ -22,11 +22,11 @@ const Home = memo(() => {
   )
 
   useEffect(() => {
+    dispatch(setIsLoading(true))
     dispatch(fetchRoomDataAction())
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(setIsLoading(true))
     if (rooms) {
       dispatch(setIsLoading(false))
     }

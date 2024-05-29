@@ -73,6 +73,12 @@ const Detail = memo(() => {
   }
 
   const handleSubmit = () => {
+    // 登入中才可以預訂
+    if (!isLogin) {
+      navigate('/login')
+      return
+    }
+
     // 清除舊的錯誤訊息
     setError({
       startDate: '',
@@ -104,12 +110,6 @@ const Detail = memo(() => {
       }))
     }
     if (errFlag) return
-
-    // 登入中才可以預訂
-    if (!isLogin) {
-      navigate('/login')
-      return
-    }
 
     navigate(
       `/order/roomId=${roomId}&people=${data.people}&startDate=${startDateString.format(
