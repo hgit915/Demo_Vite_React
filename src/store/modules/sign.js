@@ -13,7 +13,6 @@ export const signUpAction = createAsyncThunk('user/signUp', async (param, { reje
 const signSlice = createSlice({
   name: 'sign',
   initialState: {
-    profile: {},
     errMsg: '',
     showFinal: false,
   },

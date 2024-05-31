@@ -26,6 +26,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
+import { getSignData } from '@/store/selector/sign'
+import { getUserData } from '@/store/selector/user'
 import { signUpAction, setErrMsg } from '@/store/modules/sign'
 import { countryData, ZipCodeMap } from '@/utils/zipcodes'
 
@@ -64,11 +66,8 @@ const Sign = memo(() => {
     addressErr: false,
   }
   const [errors, setErrors] = useState(initialState)
-  const { allErrMsg, showFinal, isLogin } = useSelector((state) => ({
-    allErrMsg: state.sign.errMsg,
-    showFinal: state.sign.showFinal,
-    isLogin: state.user.isLogin,
-  }))
+  const { isLogin } = useSelector(getUserData)
+  const { allErrMsg, showFinal } = useSelector(getSignData)
 
   useEffect(() => {
     if (isLogin) {

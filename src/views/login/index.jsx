@@ -95,6 +95,7 @@ const Login = memo(() => {
               value={email}
               onChange={(e) => setEmail(e.target.value.trim())}
               error={emptyErr.email || Boolean(errAllMsg)}
+              autoComplete="userName"
             />
             {emptyErr.email && <FormHelperText error>帳號不得為空</FormHelperText>}
 
@@ -120,6 +121,7 @@ const Login = memo(() => {
                 onChange={(e) => {
                   setPassWord(e.target.value.trim())
                 }}
+                autoComplete="current-password"
               />
             </FormControl>
             {emptyErr.password && <FormHelperText error>密碼不得為空</FormHelperText>}
