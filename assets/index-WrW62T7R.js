@@ -1,4 +1,4 @@
-import{s as h,i as a,j as e,r as m,P as t}from"./index-Btl2Weje.js";import{r as o}from"./format-XGG4ZB3D.js";const j=h("div")(({theme:r})=>`
+import{f as h,i as a,j as e,r as m,P as t}from"./index-BZ1CMoz2.js";import{r as o}from"./format-NwQ4Baad.js";const j=h("div")(({theme:r})=>`
 
   display: flex;
   flex-direction: row;

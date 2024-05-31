@@ -1,4 +1,4 @@
-import{s as e,Z as i}from"./index-Btl2Weje.js";import{M as t}from"./Modal-C1ZUpMrU.js";const p=e(t)(({theme:o})=>`
+import{f as e,az as i,F as t}from"./index-BZ1CMoz2.js";const l=e(i)(({theme:o})=>`
   
     & .boxModal {
       position: absolute;
@@ -57,7 +57,7 @@ import{s as e,Z as i}from"./index-Btl2Weje.js";import{M as t}from"./Modal-C1ZUpM
       filter: grayscale(0);
     }
   
-  `),s=e("div")(({theme:o})=>`
+  `),p=e("div")(({theme:o})=>`
   font-size:72px;
   display: flex;
   border-radius: 10px;
@@ -107,4 +107,4 @@ import{s as e,Z as i}from"./index-Btl2Weje.js";import{M as t}from"./Modal-C1ZUpM
     }
   }
 
-`),r=o=>o.room,n=i([r],o=>({rooms:o.rooms,detail:o.detail}));export{s as C,p as M,n as g};
+`),r=o=>o.room,s=t([r],o=>({rooms:o.rooms,detail:o.detail}));export{p as C,l as M,s as g};
