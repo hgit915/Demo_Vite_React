@@ -45,12 +45,14 @@ const Home = memo(() => {
         <div className="desc">各種房型，任您挑選</div>
         {isLoading ? (
           <Skeleton variant="rounded" height={300} />
-        ) : (
+        ) : rooms.length > 0 ? (
           <ul>
             {rooms?.map((item) => {
               return <RoomItems key={item['_id']} directToPage={directToDetail} itemData={item} />
             })}
           </ul>
+        ) : (
+          <p>很抱歉，目前無可預訂的房型</p>
         )}
       </Container>
     </HomeWrapper>

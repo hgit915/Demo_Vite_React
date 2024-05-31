@@ -5,7 +5,11 @@ import { setCookie, removeCookie } from '@/utils/cookies'
 // 進行登入
 export const loginAction = createAsyncThunk('user/loginAction', async (param, { rejectWithValue }) => {
   try {
-    let res = await login(param)
+    const { email, password, checked } = param
+    let res = await login({ email, password })
+
+    // 新增 cookie 的期限屬性
+    res.cookieExpired = checked
     return res
   } catch (error) {
     return rejectWithValue(error)
@@ -62,7 +66,8 @@ const userSlice = createSlice({
       state.token = payload.token
       state.isLogin = true
       state.errMsg = ''
-      setCookie(payload.token)
+
+      setCookie(payload.token, payload.cookieExpired)
     })
     builder.addCase(checkLoginAction.fulfilled, (state, { payload }) => {
       state.token = payload.token

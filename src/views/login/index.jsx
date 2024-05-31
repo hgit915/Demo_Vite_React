@@ -24,6 +24,7 @@ const Login = memo(() => {
   const [showPassword, setShowPassword] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
+  const [checked, setChecked] = useState(true)
   const [emptyErr, setEmptyErr] = useState({ email: false, password: false })
   const { errMsg, isLogin } = useSelector(
     (state) => ({ isLogin: state.user.isLogin, errMsg: state.user.errMsg }),
@@ -40,6 +41,10 @@ const Login = memo(() => {
   useEffect(() => {
     setAllMsg(errMsg)
   }, [errMsg])
+
+  const handleChange = () => {
+    setChecked((prev) => !prev)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -60,7 +65,7 @@ const Login = memo(() => {
       }))
       return
     }
-    dispatch(loginAction({ email, password }))
+    dispatch(loginAction({ email, password, checked }))
   }
   return (
     !isLogin && (
@@ -119,8 +124,12 @@ const Login = memo(() => {
             </FormControl>
             {emptyErr.password && <FormHelperText error>密碼不得為空</FormHelperText>}
             <div className="hint">
-              <FormControlLabel sx={{ width: '120px' }} control={<Checkbox defaultChecked={true} />} label="記住帳號" />
-              <Link href="/forgot">忘記密碼？</Link>
+              <FormControlLabel
+                sx={{ width: '120px' }}
+                control={<Checkbox checked={checked} onChange={handleChange} />}
+                label="記住帳號"
+              />
+              {/* <Link href="/forgot">忘記密碼？</Link> */}
             </div>
 
             {errAllMsg && (
