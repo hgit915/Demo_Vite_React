@@ -27,31 +27,38 @@ const UserOrders = memo(() => {
   const { isLoading } = useSelector(getCommonData)
   const [data, setData] = useState('')
   const [orderIdx, setOrderIdx] = useState(0)
+  const [showItems, setShowItems] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
   let orderSelected = null
 
+  // 查詢 user 訂單
   useEffect(() => {
     dispatch(setIsLoading(true))
     dispatch(fetchUserOrders())
   }, [dispatch])
 
+  // 設定 sideBar 要顯示的訂單數量
   useEffect(() => {
     if (orderInfo) {
+      let showItems = 5
       dispatch(setIsLoading(false))
+      if (orderInfo.length < 5) showItems = orderInfo.length
+      setShowItems(showItems)
       setData(orderInfo)
       setModalOpen(false)
     }
   }, [dispatch, orderInfo, setData])
 
+  // 預設 & 點擊 sideBar 後，顯示左側詳細資訊
   const handleShowDetail = (idx) => {
     setOrderIdx(idx)
   }
-
   if (data && data.length > 0) {
     const { _id, roomId, checkInDate, checkOutDate, peopleNum, status } = data[orderIdx]
     orderSelected = { _id, roomId, checkInDate, checkOutDate, peopleNum, status }
   }
 
-  const [showItems, setShowItems] = useState(10)
+  // 顯示更多訂單數
   const loadItem = () => {
     let limit = 5
     if (data.length === showItems) return
@@ -61,9 +68,8 @@ const UserOrders = memo(() => {
     setShowItems((prev) => prev + limit)
   }
 
-  const [modalOpen, setModalOpen] = useState(false)
+  // 取消訂單
   const handleModal = (isOpen) => setModalOpen(isOpen)
-
   const handleCancel = async () => {
     dispatch(setIsLoading(true))
     setModalOpen(false)
@@ -73,6 +79,7 @@ const UserOrders = memo(() => {
     dispatch(setIsLoading(false))
   }
 
+  // 查看詳情的頁面導轉
   const handleNavigate = () => {
     navigate(`/orderSuccess/orderNo=${orderSelected['_id']}`)
   }
@@ -106,8 +113,16 @@ const UserOrders = memo(() => {
               <RightWrapper>
                 <>
                   <OrderScroll items={data} showDetail={handleShowDetail} showItems={showItems} />
-                  <Button variant="outlined" fullWidth onClick={loadItem} sx={{ marginTop: '25px' }}>
-                    查看更多 ( {showItems} 筆 / 共 {data.length} 筆)
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    onClick={loadItem}
+                    sx={{ marginTop: '25px' }}
+                    disabled={showItems === data.length}
+                  >
+                    {showItems === data.length
+                      ? `訂單載入完畢，總共 ${data.length} 筆`
+                      : `查看更多 ( ${showItems} 筆 / 共 ${data.length} 筆) `}
                   </Button>
                 </>
               </RightWrapper>
