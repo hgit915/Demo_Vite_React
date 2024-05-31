@@ -16,7 +16,9 @@ import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import FormHelperText from '@mui/material/FormHelperText'
+
 import { loginAction, setErrMsg } from '@/store/modules/user'
+import { setIsLoading } from '@/store/modules/common'
 
 const Login = memo(() => {
   const dispatch = useDispatch()
@@ -46,9 +48,10 @@ const Login = memo(() => {
     setChecked((prev) => !prev)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     // 清空狀態
+    dispatch(setIsLoading(true))
     dispatch(setErrMsg(''))
     setEmptyErr((prev) => ({
       ...prev,
@@ -63,9 +66,11 @@ const Login = memo(() => {
         email: !email,
         password: !password,
       }))
+      dispatch(setIsLoading(false))
       return
     }
-    dispatch(loginAction({ email, password, checked }))
+    await dispatch(loginAction({ email, password, checked }))
+    dispatch(setIsLoading(false))
   }
   return (
     !isLogin && (

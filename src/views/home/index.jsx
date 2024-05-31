@@ -27,7 +27,7 @@ const Home = memo(() => {
   }, [dispatch])
 
   useEffect(() => {
-    if (rooms) {
+    if (rooms.length > 0) {
       dispatch(setIsLoading(false))
     }
   }, [dispatch, rooms])
